@@ -1,0 +1,126 @@
+[gd_scene format=4 uid="uid://cgbw3113xweel"]
+
+[ext_resource type="PackedScene" uid="uid://doc61wlw1ucb7" path="res://entities/player.tscn" id="1_j8cmn"]
+[ext_resource type="TileSet" uid="uid://xnrelf1f34dd" path="res://tiles/terrain.tres" id="2_mtmls"]
+[ext_resource type="TileSet" uid="uid://dkhar7p18tlog" path="res://tiles/decoration.tres" id="3_mtmls"]
+[ext_resource type="Texture2D" uid="uid://denn46w30nef7" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/5 - Sky_color.png" id="4_o55n4"]
+[ext_resource type="Texture2D" uid="uid://dagj6t48dmq0f" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/3 - Floating_clouds.png" id="5_e4l1y"]
+[ext_resource type="Texture2D" uid="uid://b04aob7vfvn6o" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/4 - Background_clouds.png" id="6_2v5ri"]
+[ext_resource type="Texture2D" uid="uid://c0ai0y4panu41" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/1 - Waters_version_1.png" id="7_63ryy"]
+[ext_resource type="Texture2D" uid="uid://bhex6r6pia24x" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/2 - Waters_version_2.png" id="8_wyuaa"]
+[ext_resource type="PackedScene" uid="uid://chotr1c56af2i" path="res://entities/camera.tscn" id="9_wyuaa"]
+[ext_resource type="PackedScene" uid="uid://cecj7xl8fu86q" path="res://entities/level_end.tscn" id="10_ttii7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h3vyf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_63ryy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wyuaa")
+}],
+"loop": 1,
+"name": &"BackgoundWater",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttii7"]
+size = Vector2(10, 189)
+
+[node name="Tropic" type="Node2D" unique_id=15385804]
+metadata/_edit_vertical_guides_ = [576.0]
+
+[node name="Player" parent="." unique_id=1431446218 instance=ExtResource("1_j8cmn")]
+position = Vector2(270, 171)
+
+[node name="Background" type="Node" parent="." unique_id=599603175]
+
+[node name="5 - Sky" type="Parallax2D" parent="Background" unique_id=1396429870]
+texture_repeat = 2
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/5 - Sky" unique_id=591981176]
+z_index = -1
+texture_repeat = 2
+texture = ExtResource("4_o55n4")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 208)
+
+[node name="4 - FloatingClunds" type="Parallax2D" parent="Background" unique_id=1003941994]
+texture_repeat = 2
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/4 - FloatingClunds" unique_id=499838587]
+z_index = -1
+texture_repeat = 2
+texture = ExtResource("5_e4l1y")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 208)
+
+[node name="3 - BackgoundClunds" type="Parallax2D" parent="Background" unique_id=537496735]
+texture_repeat = 2
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/3 - BackgoundClunds" unique_id=33607087]
+z_index = -1
+texture_repeat = 2
+texture = ExtResource("6_2v5ri")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 208)
+
+[node name="2 - Water" type="Parallax2D" parent="Background" unique_id=1683402809]
+z_index = -1
+texture_repeat = 2
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-1, 9)
+repeat_size = Vector2(288, 0)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Background/2 - Water" unique_id=1088464457]
+texture_repeat = 2
+position = Vector2(576, 0)
+sprite_frames = SubResource("SpriteFrames_h3vyf")
+animation = &"BackgoundWater"
+autoplay = "BackgoundWater"
+frame_progress = 0.19204672
+centered = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/2 - Water" unique_id=1585857707]
+texture_repeat = 2
+sprite_frames = SubResource("SpriteFrames_h3vyf")
+animation = &"BackgoundWater"
+autoplay = "BackgoundWater"
+frame_progress = 0.21799661
+centered = false
+
+[node name="TileMaps" type="Node" parent="." unique_id=1436226979]
+
+[node name="Terrain" type="TileMapLayer" parent="TileMaps" unique_id=671105099]
+position = Vector2(0, -9)
+tile_map_data = PackedByteArray("AAAAAAwAAgAGAAMAAAABAAwAAgAGAAMAAAACAAwAAgAGAAMAAAADAAwAAgAGAAMAAAAEAAwAAgAGAAMAAAAFAAwAAgAGAAMAAAAGAAwAAgAGAAMAAAANAAwAAgABAAMAAAAOAAwAAgAGAAMAAAAPAAwAAgAGAAMAAAAQAAwAAgAGAAMAAAARAAwAAgAGAAMAAAASAAwAAgAGAAMAAAATAAwAAgAGAAMAAAAUAAwAAgAGAAMAAAAVAAwAAgAGAAMAAAAWAAwAAgAGAAMAAAAXAAwAAgAGAAMAAAAYAAwAAgAGAAMAAAAZAAwAAgAGAAMAAAAaAAwAAgAGAAMAAAAbAAwAAgAGAAMAAAAcAAwAAgAGAAMAAAAdAAwAAgAGAAMAAAAeAAwAAgAGAAMAAAAfAAwAAgAGAAMAAAAgAAwAAgAGAAMAAAAhAAwAAgAGAAMAAAAiAAwAAgAGAAMAAAAjAAwAAgAGAAMAAAAkAAwAAgAGAAMAAAAlAAwAAgAGAAMAAAAmAAwAAgAGAAMAAAAnAAwAAgAGAAMAAAAoAAwAAgAGAAMAAAApAAwAAgAGAAMAAAAqAAwAAgAGAAMAAAArAAwAAgAGAAMAAAAsAAwAAgAGAAMAAAAtAAwAAgAGAAMAAAAuAAwAAgAGAAMAAAAvAAwAAgAGAAMAAAAwAAwAAgAGAAMAAAAxAAwAAgAGAAMAAAAKAAsAAgAPAAMAAAAHAAwAAgAHAAMAAAAyAAwAAgACAAMAAAAzAAwAAgACAAMAAAA0AAwAAgACAAMAAAA1AAwAAgACAAMAAAA2AAwAAgACAAMAAAA3AAwAAgACAAMAAAA4AAwAAgACAAMAAAA5AAwAAgACAAMAAAA6AAwAAgACAAMAAAA7AAwAAgACAAMAAAA8AAwAAgACAAMAAAAEAAoAAgAJAAMAAAAFAAoAAgAKAAMAAAAGAAoAAgAMAAMAAAAHAAoAAgANAAMAAAACAAcAAgAJAAMAAAADAAcAAgAKAAMAAAAEAAcAAgAMAAMAAAAFAAcAAgANAAMAAAAHAAUAAgAJAAMAAAAIAAUAAgAKAAMAAAAJAAUAAgAMAAMAAAAKAAUAAgANAAMAAAACAAQAAgAJAAMAAAADAAQAAgAKAAMAAAAEAAQAAgAMAAMAAAAFAAQAAgANAAMAAAAIAAIAAgAJAAMAAAAJAAIAAgAKAAMAAAAKAAIAAgAMAAMAAAALAAIAAgANAAMAAAANAAAAAgAJAAMAAAAOAAAAAgAKAAMAAAAPAAAAAgAMAAMAAAAQAAAAAgANAAMAAAASAP7/AgAJAAMAAAATAP7/AgAKAAMAAAAUAP7/AgAMAAMAAAAVAP7/AgANAAMAAAAWAPz/AgAJAAMAAAAXAPz/AgAKAAMAAAAYAPz/AgAMAAMAAAAZAPz/AgANAAMAAAAaAPr/AgAJAAMAAAAbAPr/AgAKAAMAAAAcAPr/AgAMAAMAAAAdAPr/AgANAAMAAAAfAPj/AgAJAAMAAAAgAPj/AgAKAAMAAAAhAPj/AgAMAAMAAAAiAPj/AgANAAMAAAAjAPb/AgAJAAMAAAAkAPb/AgAKAAMAAAAlAPb/AgAMAAMAAAAmAPb/AgANAAMAAAA9AAwAAgACAAMAAAA+AAwAAgACAAMAAAA/AAwAAgACAAMAAABAAAwAAgACAAMAAABBAAwAAgACAAMAAABCAAwAAgACAAMAAABDAAwAAgACAAMAAABEAAwAAgACAAMAAABFAAwAAgACAAMAAABGAAwAAgACAAMAAABHAAwAAgACAAMAAABIAAwAAgACAAMAAABJAAwAAgACAAMAAABKAAwAAgACAAMAAABLAAwAAgACAAMAAABMAAwAAgACAAMAAABNAAwAAgACAAMAAABOAAwAAgACAAMAAABPAAwAAgACAAMAAABQAAwAAgACAAMAAABRAAwAAgACAAMAAABSAAwAAgACAAMAAABTAAwAAgACAAMAAABUAAwAAgACAAMAAABVAAwAAgACAAMAAABWAAwAAgACAAMAAABXAAwAAgACAAMAAABYAAwAAgACAAMAAABZAAwAAgACAAMAAABaAAwAAgACAAMAAABbAAwAAgACAAMAAABcAAwAAgACAAMAAABdAAwAAgACAAMAAABeAAwAAgACAAMAAABfAAwAAgACAAMAAABgAAwAAgACAAMAAABhAAwAAgACAAMAAABiAAwAAgACAAMAAABjAAwAAgACAAMAAABkAAwAAgACAAMAAABlAAwAAgACAAMAAABmAAwAAgACAAMAAABnAAwAAgACAAMAAABoAAwAAgACAAMAAABpAAwAAgACAAMAAABqAAwAAgACAAMAAABrAAwAAgACAAMAAABsAAwAAgACAAMAAABtAAwAAgACAAMAAABuAAwAAgACAAMAAABvAAwAAgACAAMAAABwAAwAAgACAAMAAABxAAwAAgACAAMAAAByAAwAAgACAAMAAABzAAwAAgACAAMAAAB0AAwAAgACAAMAAAB1AAwAAgACAAMAAAB2AAwAAgACAAMAAAB3AAwAAgACAAMAAAB4AAwAAgACAAMAAAB5AAwAAgACAAMAAAB6AAwAAgACAAMAAAB7AAwAAgACAAMAAAA=")
+tile_set = ExtResource("2_mtmls")
+
+[node name="Decoration" type="TileMapLayer" parent="TileMaps" unique_id=1652492996]
+position = Vector2(0, -9)
+tile_map_data = PackedByteArray("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")
+tile_set = ExtResource("3_mtmls")
+
+[node name="Camera" parent="." unique_id=147572889 instance=ExtResource("9_wyuaa")]
+limit_right = 579
+
+[node name="LevelEnd" parent="." unique_id=1833825287 instance=ExtResource("10_ttii7")]
+position = Vector2(594, 172)
+next_level = "forest"
+
+[node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=819758209]
+z_index = 2
+position = Vector2(-5, -77.5)
+shape = SubResource("RectangleShape2D_ttii7")
+
+[editable path="LevelEnd"]
